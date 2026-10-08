@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, type FormEvent } from 'react';
 import '../assets/styles/Contact.scss';
 // import emailjs from '@emailjs/browser';
 import Box from '@mui/material/Box';
@@ -16,9 +16,7 @@ function Contact() {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [messageError, setMessageError] = useState<boolean>(false);
 
-  const form = useRef();
-
-  const sendEmail = (e: any) => {
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setNameError(name === '');
@@ -55,12 +53,13 @@ function Contact() {
         <div className="contact_wrapper">
           <h1>Contact Me</h1>
           <p>Got a project waiting to be realized? Let's collaborate and make it happen!</p>
+          <p><a href="mailto:rinxef@gmail.com">rinxef@gmail.com</a></p>
           <Box
-            ref={form}
             component="form"
             noValidate
             autoComplete="off"
             className='contact-form'
+            onSubmit={sendEmail}
           >
             <div className='form-flex'>
               <TextField
@@ -103,7 +102,7 @@ function Contact() {
               error={messageError}
               helperText={messageError ? "Please enter the message" : ""}
             />
-            <Button variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
+            <Button type="submit" variant="contained" endIcon={<SendIcon />}>
               Send
             </Button>
           </Box>

@@ -1,80 +1,139 @@
 .projects-container {
-    display: flex;
-    flex-direction: column;
-    padding: 5% 10%;
-    text-align: left;
-}
-  
-.projects-container .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px;
-}
-  
-.projects-container .projects-grid .project {
-    text-align: left;
-    padding: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 8px;
+  padding: 6% 10%;
+  text-align: left;
 }
 
-.project-mark {
-    display: flex;
-    min-height: 120px;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 18px;
-    border-radius: 5px;
-    background: linear-gradient(135deg, rgba(80, 0, 202, 0.55), rgba(13, 17, 22, 0.9));
-    color: white;
-    font-family: 'Courier Prime', monospace;
-    font-size: 1.1rem;
-    letter-spacing: 0.08em;
+.projects-heading {
+  max-width: 700px;
+  margin-bottom: 36px;
+
+  h1 { margin: 0 0 12px; }
+  p { margin: 0; color: rgba(255, 255, 255, 0.7); line-height: 1.65; }
 }
 
-.project-link {
-    display: inline-block;
-    margin-top: 8px;
-    color: #b99bff;
+.projects-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #b99bff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-.light-mode .projects-grid .project {
-    border-color: rgba(0, 0, 0, 0.14);
+.projects-grid, .game-jam-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
-.light-mode .project-mark {
-    color: white;
+.project-card, .game-jam-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid rgba(185, 155, 255, 0.2);
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
+  overflow: hidden;
 }
 
-.project h2:hover {
-    text-decoration: underline;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
-}
-  
-.zoom {
-    border-radius: 5px;
-    transition: transform .2s;
-    margin: 0 auto;
-}
-  
-.zoom:hover {
-    transform: scale(1.05);
+.project-image {
+  display: block;
+  width: calc(100% + 52px);
+  height: 380px;
+  max-width: none;
+  margin: -26px -26px 22px;
+  object-fit: cover;
+  background: rgba(0, 0, 0, 0.18);
 }
 
-@media screen {
-    @media (max-width: 700px) {
-        .projects-container {
-            display: block;
-            padding-left: 5%;
-            padding-right: 5%;
-        }
-  
-        .projects-container .projects-grid {
-            display: block;
-        }
-      
-        .projects-container .projects-grid .project {
-            padding-bottom: 5%;
-        }
-    }
+.game-jam-image {
+  height: 240px;
+}
+
+.project-card-topline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 18px;
+  font-size: 0.82rem;
+}
+
+.project-status { color: #cbb7ff; font-weight: 700; }
+.project-engine { color: rgba(255, 255, 255, 0.58); }
+.project-card h2, .game-jam-card h3 { margin: 0 0 12px; font-size: 1.4rem; }
+.project-description, .game-jam-card p { margin: 0 0 16px; color: rgba(255, 255, 255, 0.72); line-height: 1.6; }
+
+.project-card ul {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 20px;
+  padding-left: 19px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.92rem;
+}
+
+.project-role {
+  margin-top: auto;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(156, 107, 255, 0.15);
+  color: #d7c5ff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 0 0 18px;
+}
+
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid rgba(185, 155, 255, 0.36);
+  border-radius: 8px;
+  color: #e0d4ff;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.project-links a:hover { background: rgba(156, 107, 255, 0.15); }
+
+.game-jams { margin-top: 52px; }
+.game-jams > h2 { margin: 0 0 20px; }
+.game-jam-card { text-decoration: none; transition: border-color 160ms ease, transform 160ms ease; }
+.game-jam-card:hover { border-color: rgba(185, 155, 255, 0.65); transform: translateY(-2px); }
+.game-jam-link { margin-bottom: 15px; color: #cbb7ff; font-size: 0.82rem; font-weight: 700; }
+
+.light-mode {
+  .projects-heading p, .project-description, .game-jam-card p, .project-card ul { color: rgba(13, 17, 22, 0.72); }
+  .project-card, .game-jam-card { border-color: rgba(80, 0, 202, 0.16); background: linear-gradient(145deg, rgba(80, 0, 202, 0.035), rgba(255, 255, 255, 0.72)); }
+  .projects-eyebrow, .project-status, .game-jam-link { color: #5422a7; }
+  .project-engine { color: rgba(13, 17, 22, 0.58); }
+  .project-role { background: rgba(80, 0, 202, 0.1); color: #5422a7; }
+}
+
+@media (max-width: 700px) {
+  .projects-container { padding: 8% 5%; }
+  .projects-grid, .game-jam-grid { grid-template-columns: 1fr; }
+  .project-card, .game-jam-card { padding: 22px; }
+  .project-image { width: calc(100% + 44px); height: 330px; margin: -22px -22px 20px; }
+  .game-jam-image { height: 240px; }
+}
+
+.light-mode .project-links a {
+  border-color: rgba(80, 0, 202, 0.25);
+  color: #5422a7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-jam-card { transition: none; }
 }
